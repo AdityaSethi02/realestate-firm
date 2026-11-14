@@ -2,7 +2,7 @@
  * Site color themes. Change ACTIVE_THEME_INDEX to switch the whole palette.
  * 0 = current teal theme · 1–4 = brand alternatives
  */
-export const ACTIVE_THEME_INDEX = 0;
+export const ACTIVE_THEME_INDEX = 1;
 
 export type ThemeColors = {
   name: string;

@@ -6,7 +6,7 @@ import { FaqSection } from "@/components/marketing/faq-section";
 import { PartnersStrip } from "@/components/marketing/partners-strip";
 import { Reveal } from "@/components/motion/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { getFeaturedProperties } from "@/data/mock/properties";
+import { getFeaturedProperties, localities } from "@/data/mock/properties";
 import { getPublishedTestimonials } from "@/data/mock/reviews";
 import { faqs } from "@/data/mock/faqs";
 import { brand, whatsappLink, whyUs } from "@/lib/brand";
@@ -34,44 +34,60 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative">
-        <div className="relative min-h-[72vh] overflow-hidden sm:min-h-[78vh]">
-          <PropertyImage
-            src={brandImages.hero}
-            alt={`${brand.name} — Udaipur homes`}
-            className="absolute inset-0 rounded-none min-h-[72vh] sm:min-h-[78vh] animate-fade-in"
-            priority
-          />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: [
-                "linear-gradient(to top, color-mix(in srgb, var(--hero-overlay) 78%, transparent) 0%, color-mix(in srgb, var(--hero-overlay) 45%, transparent) 45%, color-mix(in srgb, var(--hero-overlay) 22%, transparent) 100%)",
-                "linear-gradient(to right, color-mix(in srgb, var(--hero-overlay) 35%, transparent), transparent 55%)",
-              ].join(", "),
-            }}
-          />
-          <div className="absolute inset-0 flex flex-col justify-end pointer-events-none">
-            <div className="container-page pb-20 pt-28 sm:pb-24 animate-fade-up">
-              <p className="font-serif text-4xl text-white drop-shadow-sm sm:text-5xl lg:text-6xl text-balance">
-                {brand.name}
-              </p>
-              <h1 className="mt-4 max-w-lg text-base text-white/95 drop-shadow-sm sm:text-lg text-balance">
-                Trusted property advisors for buying, selling and renting in Udaipur.
-              </h1>
-              <div className="mt-8 pointer-events-auto flex flex-wrap gap-3">
-                <ButtonLink href="/properties" variant="secondary" size="lg">
-                  Browse properties
-                </ButtonLink>
-                <ButtonLink href="/contact" variant="inverse" size="lg">
-                  Book consultation
-                </ButtonLink>
-              </div>
-            </div>
+      <section className="relative overflow-hidden bg-accent text-accent-foreground">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(90deg, transparent, transparent 72px, currentColor 72px, currentColor 73px)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, white 18%, transparent), transparent 55%)",
+          }}
+          aria-hidden
+        />
+
+        <div className="container-page relative flex flex-col items-center px-4 pb-14 pt-16 text-center sm:pb-16 sm:pt-20 animate-fade-up">
+          <p className="flex items-center gap-3 text-[11px] font-medium tracking-[0.22em] text-accent-foreground/80 uppercase sm:text-xs">
+            <span className="hidden h-px w-10 bg-accent-foreground/35 sm:block" aria-hidden />
+            Top property advisors in Udaipur
+            <span className="hidden h-px w-10 bg-accent-foreground/35 sm:block" aria-hidden />
+          </p>
+
+          <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-[1.15] text-accent-foreground/95 sm:text-5xl lg:text-6xl">
+            Find your{" "}
+            <em className="italic font-normal text-accent-foreground/95">perfect</em>{" "}
+            property in Udaipur
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-base text-accent-foreground/85 text-balance sm:text-lg">
+            Buy, sell or rent with {brand.name} — verified listings, clear local advice, and
+            guidance from first visit to registration.
+          </p>
+
+          <div className="mt-10 w-full max-w-4xl text-left text-foreground">
+            <SearchWidget variant="hero" />
           </div>
-        </div>
-        <div className="container-page relative z-10 -mt-10 pb-6 sm:pb-8">
-          <SearchWidget variant="hero" />
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-accent-foreground/80">
+            <span className="text-[11px] font-medium tracking-[0.18em] uppercase">
+              Popular
+            </span>
+            {localities.slice(0, 5).map((locality) => (
+              <Link
+                key={locality}
+                href={`/properties?locality=${encodeURIComponent(locality)}`}
+                className="underline-offset-4 transition-opacity hover:text-accent-foreground hover:underline"
+              >
+                {locality}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -122,14 +138,14 @@ export default function HomePage() {
       <section className="section-padding bg-secondary text-secondary-foreground">
         <div className="container-page">
           <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-serif text-3xl sm:text-4xl text-secondary-foreground">
-              How we help
-            </h2>
-            <p className="mt-3 text-secondary-foreground/70">
-              Local knowledge, verified listings, and one advisor with you from shortlist to handover.
-            </p>
-          </div>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-serif text-3xl sm:text-4xl text-secondary-foreground">
+                How we help
+              </h2>
+              <p className="mt-3 text-secondary-foreground/70">
+                Local knowledge, verified listings, and one advisor with you from shortlist to handover.
+              </p>
+            </div>
           </Reveal>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {pillars.map((item) => (

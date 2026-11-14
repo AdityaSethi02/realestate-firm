@@ -1,5 +1,5 @@
 export const brand = {
-  name: "RealEstate Firm",
+  name: "Tandon Realty",
   tagline: "Buy · Sell · Rent in Udaipur",
   location: "Udaipur, Rajasthan, India",
   founder: {
@@ -9,16 +9,16 @@ export const brand = {
     clientsServed: 2500,
   },
   contact: {
-    email: "hello@realestatefirm.in",
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210",
+    email: "hello@tandonrealty.in",
+    phone: "+91 63762 71849",
+    whatsapp: "+91 63762 71849",
     address: "Lake Palace Road, Udaipur, Rajasthan 313001",
     hours: "Open every day, 10:00 AM – 8:00 PM",
   },
   social: {
-    instagram: "https://instagram.com/realestatefirm",
-    facebook: "https://facebook.com/realestatefirm",
-    youtube: "https://youtube.com/@realestatefirm",
+    instagram: "https://instagram.com/tandonrealty",
+    facebook: "https://facebook.com/tandonrealty",
+    youtube: "https://youtube.com/@tandonrealty",
   },
   stats: {
     years: 18,
